@@ -1,0 +1,83 @@
+{
+  "name": "mule-secure-properties",
+  "displayName": "Mule Secure Properties",
+  "description": "Mule Secure Properties extension for Visual Studio Code",
+  "icon": "media/icon.png",
+  "publisher": "CodeButter",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:properties"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "mule-secure-properties.setKey",
+        "title": "Set Secure Key",
+        "category": "Mule Secure Properties"
+      },
+      {
+        "command": "mule-secure-properties.setAlgorithm",
+        "title": "Set Encryption Algorithm",
+        "category": "Mule Secure Properties"
+      },
+      {
+        "command": "mule-secure-properties.setMode",
+        "title": "Set Encryption Mode",
+        "category": "Mule Secure Properties"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Mule Secure Properties",
+      "properties": {
+        "mule-secure-properties.algorithm": {
+          "description": "The default algorithm to use for encryption/decryption",
+          "type": "string",
+          "enum": [
+            "AES",
+            "Blowfish",
+            "DES",
+            "DESede",
+            "RC2",
+            "RCA"
+          ],
+          "default": "AES"
+        },
+        "mule-secure-properties.mode": {
+          "description": "The default mode to use for encryption/decryption",
+          "type": "string",
+          "enum": [
+            "CBC",
+            "CFB",
+            "OFB",
+            "ECB"
+          ],
+          "default": "CBC"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.78.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.3",
+    "@vscode/test-electron": "^2.3.2"
+  }
+}
