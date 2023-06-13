@@ -52,4 +52,4 @@ $ACTION \
 $ALGORITHM \
 $MODE \
 $KEY \
-$VALUE
+"$VALUE"
