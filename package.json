@@ -2,9 +2,13 @@
   "name": "mule-secure-properties",
   "displayName": "Mule Secure Properties",
   "description": "Mule Secure Properties extension for Visual Studio Code",
-  "icon": "media/icon.png",
   "publisher": "CodeButter",
-  "version": "1.0.0",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayarabis/mule-secure-properties"
+  },
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.78.0"
   },
