@@ -126,13 +126,23 @@ function activate(context) {
 
   // only active lense on secure properties file
   [encryptProvider, decryptProvider].map((provider) => {
-    return vscode.languages.registerCodeLensProvider(
-      {
-        scheme: "file",
-        language: "properties",
-        pattern: "**/*secure*.properties",
-      },
-      provider
+    context.subscriptions.push(
+      vscode.languages.registerCodeLensProvider(
+        {
+          scheme: "file",
+          language: "properties",
+          pattern: "**/*secure*.properties",
+        },
+        provider
+      ),
+      vscode.languages.registerCodeLensProvider(
+        {
+          scheme: "file",
+          language: "java-properties",
+          pattern: "**/*secure*.properties",
+        },
+        provider
+      )
     );
   });
 
@@ -141,10 +151,11 @@ function activate(context) {
     vscode.window.onDidChangeActiveTextEditor((editor) => {
       if (
         editor &&
-        editor.document.languageId === "properties" &&
+        editor.document.languageId.includes("properties") &&
         editor.document.fileName.includes("secure")
       ) {
         updateDecorations(editor);
+        ensureRegistry();
       }
     })
   );
@@ -197,7 +208,7 @@ function activate(context) {
   context.subscriptions.push(
     vscode.workspace.onDidChangeTextDocument((event) => {
       if (
-        active.document.languageId === "properties" &&
+        active.document.languageId.includes("properties") &&
         event.document.fileName.includes("secure")
       ) {
         updateDecorations(vscode.window.activeTextEditor);
@@ -209,7 +220,7 @@ function activate(context) {
   //   update decoration on current active editor on load
   const active = vscode.window.activeTextEditor;
   if (
-    active.document.languageId === "properties" &&
+    active.document.languageId.includes("properties") &&
     active.document.fileName.includes("secure")
   ) {
     updateDecorations(vscode.window.activeTextEditor);
@@ -222,7 +233,7 @@ function activate(context) {
  * @description Update decoration
  */
 function updateDecorations(editor) {
-  if (editor.document.languageId != "properties") return;
+  if (!editor.document.languageId.includes("properties")) return;
   // for each line, check if it contains ![ and ], if not add unsafe decoration
   const safeDecorations = [];
   const unsafeDecorations = [];
