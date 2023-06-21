@@ -10,6 +10,8 @@ The Mule Secure Properties extension is a powerful tool for encrypting and decry
 
 The Mule Secure Properties extension enhances your development workflow by offering Code Lens actions for encrypting and decrypting secure properties. Code Lens displays these actions directly in your code, allowing you to easily encrypt or decrypt properties without leaving the editor.
 
+![Screenshot 2023-06-22 at 2 47 10 AM](https://github.com/ayarabis/mule-secure-properties/assets/99114889/051e043b-14ac-45f5-bdaf-b77189dc4d4e)
+
 ### Per-File Encryption Settings Persistence
 
 This extension ensures that your encryption settings are persisted on a per-file basis. This means that once you encrypt or decrypt a secure property within a file, the extension will remember your choice and apply it consistently. You no longer need to repeat the process every time you open the file.
@@ -22,6 +24,8 @@ To assist you in identifying unencrypted properties within your code, the Mule S
 
 The extension allows you to customize the default encryption algorithm and mode to suit your preferences. You can configure the extension to use your preferred encryption algorithm and mode as the default choice for encrypting new secure properties. This feature provides flexibility and enables you to align the extension with your specific security requirements.
 
+![Screenshot 2023-06-22 at 2 42 07 AM](https://github.com/ayarabis/mule-secure-properties/assets/99114889/ac255be6-68b2-4a08-b07c-8c69a25709fb)
+
 ## Installation
 
 1. Launch Visual Studio Code.
@@ -32,7 +36,7 @@ The extension allows you to customize the default encryption algorithm and mode 
 
 ## Usage
 
-1. Open any .properties file containing "secure" on it's name.
+1. Open any .properties file containing "secure" on it's name. ie: secure-config.properties
 2. Locate a property that you want to encrypt or decrypt.
 3. Look for the Code Lens action indicators above the property.
 4. Click on the "Encrypt" action to encrypt the property or the "Decrypt" action to decrypt it.
