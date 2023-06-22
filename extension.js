@@ -76,10 +76,17 @@ async function execAction(context, action, range) {
   }
 
   try {
+    let result = ''
     // execute secure properties tool
-    let result = await execShell(
-      `sh ${extPath}/lib/crypt-tool.sh ${action} ${algorithm} ${mode} ${key} "${value}"`
-    );
+    if (process.platform === "win32") {
+      result = await execShell(
+        `call ${extPath}/lib/crypt-tool.batch ${action} ${algorithm} ${mode} ${key} "${value}"`
+      );
+    } else {
+      result = await execShell(
+        `sh ${extPath}/lib/crypt-tool.sh ${action} ${algorithm} ${mode} ${key} "${value}"`
+      );
+    }
 
     if (action === "encrypt") {
       // add ![ and ] to encrypted value
