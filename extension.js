@@ -75,8 +75,9 @@ async function execAction(context, action, range) {
     value = value.replace(/!\[|\]/g, "");
   }
 
+  if (!key || !value) return;
   try {
-    let result = ''
+    let result = "";
     // execute secure properties tool
     if (process.platform === "win32") {
       result = await execShell(
