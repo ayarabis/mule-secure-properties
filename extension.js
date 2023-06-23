@@ -88,11 +88,12 @@ async function execAction(context, action, range) {
       );
     }
 
+    result = result.replace(/\r?\n/g, "");
     if (action === "encrypt") {
       // add ![ and ] to encrypted value
       result = `![${result}]`;
     }
-    prop[1] = result.replace(/\n/g, "");
+    prop[1] = result;
     // remove empty string at the end of array
     prop.pop();
 
