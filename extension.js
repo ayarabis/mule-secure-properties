@@ -80,7 +80,7 @@ async function execAction(context, action, range) {
     // execute secure properties tool
     if (process.platform === "win32") {
       result = await execShell(
-        `call ${extPath}/lib/crypt-tool.batch ${action} ${algorithm} ${mode} ${key} "${value}"`
+        `call ${extPath}/lib/crypt-tool.bat ${action} ${algorithm} ${mode} ${key} "${value}"`
       );
     } else {
       result = await execShell(
